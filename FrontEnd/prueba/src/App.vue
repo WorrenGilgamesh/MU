@@ -18,4 +18,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.primary-color {
+  background-color: #304ffe;
+}
+.primary-text {
+  color: #ffffff;
+}
 </style>
