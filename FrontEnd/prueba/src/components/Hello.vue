@@ -16,6 +16,11 @@ export default {
   },
   components: {
     quejas
+  },
+  mounted () {
+    navigator.geolocation.getCurrentPosition(pos => {
+      console.log(pos.coords)
+    })
   }
 }
 </script>

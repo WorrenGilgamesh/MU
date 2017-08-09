@@ -1,7 +1,7 @@
 <template>
   <div class="nav w3-top">
     <div class="w3-bar primary-color primary-text w3-large">
-        <a href="#" class="w3-bar-item w3-button">México Unido</a>
+        <a class="w3-bar-item w3-button" @click="$router.push({name: 'Hello'})">México Unido</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right">Organizaciones</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right">Ranking</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right">Quejas y Propuestas</a>
