@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Queja from '@/components/QuejaForm'
+import Organizacion from '@/components/Organizacion'
 
 Vue.use(Router)
 
@@ -23,9 +24,9 @@ export default new Router({
       component: Queja
     },
     {
-      path: '/test/:id',
-      name: 'Test',
-      template: 'test',
+      path: '/organizacion/:id',
+      name: 'Organizacion',
+      component: Organizacion,
       children: [
         {
           path: 'profile',

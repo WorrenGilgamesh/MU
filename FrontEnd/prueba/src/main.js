@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import resource from 'vue-resource'
 import Nav from '@/components/Nav'
 
 Vue.config.productionTip = false
-
+Vue.use(resource)
 Vue.component('top-nav', Nav)
 
 /* eslint-disable no-new */

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="w3-light-grey">
     <top-nav></top-nav>  
     <router-view></router-view> 
   </div>
@@ -27,10 +27,19 @@ body {
 .primary-color {
   background-color: #304ffe;
 }
+.primary-color-dark {
+  background-color: #0026ca;
+}
 .primary-text {
   color: #ffffff;
 }
 .secondary-color {
   background-color: #d32f2f;
+}
+.secondary-color-dark {
+  background-color: #9a0007;
+}
+.secondary-boder {
+  border-color: #9a0007 !important;
 }
 </style>
