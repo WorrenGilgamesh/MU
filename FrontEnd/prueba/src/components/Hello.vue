@@ -19,7 +19,9 @@ export default {
   },
   mounted () {
     navigator.geolocation.getCurrentPosition(pos => {
-      console.log(pos.coords)
+      console.log(pos.coords.latitude + ', ' + pos.coords.longitude)
+    }, err => {
+      console.log(err.message)
     })
   }
 }
