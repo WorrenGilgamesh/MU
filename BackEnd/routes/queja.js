@@ -3,7 +3,8 @@ var express = require('express')
 
 var request = require('request');
 
-router.get('/showQueja', function(req, res) {
+router.get('/showQueja/:id', function(req, res) {
+  var key = req.params.id;
 var data = {
   "query": `query GetQueja ($queja: ID!){
   getQuejas(id: $queja){
@@ -14,7 +15,7 @@ var data = {
   }
 }
   `,
-  "variables": {"queja": "UXVlamFzOjQ"}
+  "variables": {"queja": key}
 }
 
 request({
