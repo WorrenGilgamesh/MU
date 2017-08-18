@@ -21,8 +21,8 @@
                 <p>#{{referencia}}</p>
             </div>
               <div class="w3-center w3-padding">
-                <button class="w3-btn w3-block w3-blue w3-round">Login Facebook</button>
-                <button class="w3-btn w3-block w3-orange w3-round">Login Gmail</button>
+                <button class="w3-btn w3-block w3-border facebook primary-text w3-round">Login Facebook</button>
+                <button class="w3-btn w3-block w3-border w3-margin-top google w3-round">Login Gmail</button>
               </div>
               <p>Ó</p>
               <div class="w3-center w3-padding">

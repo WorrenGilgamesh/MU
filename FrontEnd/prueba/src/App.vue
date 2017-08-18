@@ -42,4 +42,11 @@ body {
 .secondary-boder {
   border-color: #9a0007 !important;
 }
+.facebook {
+  background-color: #3b5998;
+}
+.google {
+  color: #d62d20;
+  border-color: #d62d20;
+}
 </style>

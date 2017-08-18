@@ -11,37 +11,37 @@
     <div class="categorias w3-row-padding w3-margin-top">
         <div class="w3-card w3-col l4 m5 s12 w3-display-container" v-on:mouseover="seg = !seg" v-on:mouseout="seg = !seg">
             <div class="w3-display-container category">
-                <p class="w3-display-middle" v-show="seg"><i class="fa fa-shield w3-jumbo"></i></p>
+                <p class="w3-display-middle" v-show="seg"><img src="../assets/seguridad.png"></p>
                 <p class="w3-display-middle w3-xlarge" v-show="!seg">Seguridad</p>
             </div>
         </div>
         <div class="w3-card w3-col l4 m5 s12 w3-display-container" v-on:mouseover="trans = !trans" v-on:mouseout="trans = !trans">
             <div class="w3-display-container category">
-                <p class="w3-display-middle" v-show="trans"><i class="fa fa-subway w3-jumbo"></i></p>
+                <p class="w3-display-middle" v-show="trans"><img src="../assets/transporte.png"></p>
                 <p class="w3-display-middle w3-xlarge" v-show="!trans">Transporte y Comunicación</p>
             </div>
         </div>
         <div class="w3-card w3-col l4 m5 s12 w3-display-container" v-on:mouseover="salud = !salud" v-on:mouseout="salud = !salud">
             <div class="w3-display-container category">
-                <p class="w3-display-middle" v-show="salud"><i class="fa fa-hospital-o w3-jumbo"></i></p>
+                <p class="w3-display-middle" v-show="salud"><img src="../assets/cruz.png"></p>
                 <p class="w3-display-middle w3-xlarge" v-show="!salud">Salud</p>
             </div>
         </div>
         <div class="w3-card w3-col l4 m5 s12 w3-display-container" v-on:mouseover="medio = !medio" v-on:mouseout="medio = !medio">
             <div class="w3-display-container category">
-                <p class="w3-display-middle" v-show="medio"><i class="fa fa-tree w3-jumbo"></i></p>
+                <p class="w3-display-middle" v-show="medio"><img src="../assets/medio.png"></p>
                 <p class="w3-display-middle w3-xlarge" v-show="!medio">Medio Ambiente</p>
             </div>
         </div>
         <div class="w3-card w3-col l4 m5 s12 w3-display-container" v-on:mouseover="ed = !ed" v-on:mouseout="ed = !ed">
             <div class="w3-display-container category">
-                <p class="w3-display-middle" v-show="ed"><i class="fa fa-mortar-board w3-jumbo"></i></p>
+                <p class="w3-display-middle" v-show="ed"><img src="../assets/educacion.png"></p>
                 <p class="w3-display-middle w3-xlarge" v-show="!ed">Educación</p>
             </div>
         </div>
         <div class="w3-card w3-col l4 m5 s12 w3-display-container" v-on:mouseover="ener = !ener" v-on:mouseout="ener = !ener">
             <div class="w3-display-container category">
-                <p class="w3-display-middle" v-show="ener"><i class="fa fa-bolt w3-jumbo"></i></p>
+                <p class="w3-display-middle" v-show="ener"><img src="../assets/luz.png"></p>
                 <p class="w3-display-middle w3-xlarge" v-show="!ener">Energia</p>
             </div>
         </div>
