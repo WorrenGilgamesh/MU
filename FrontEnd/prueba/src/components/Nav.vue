@@ -1,7 +1,7 @@
 <template>
   <div class="nav w3-top">
     <div class="w3-bar primary-color-dark primary-text w3-large">
-        <a class="w3-bar-item w3-button" @click="$router.push({name: 'Hello'})">#FuturoMéxico</a>
+        <a class="w3-bar-item w3-button alogo" @click="$router.push({name: 'Hello'})"><img src="../assets/logo.png" class="logo"></a>
         <a class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right"><i class="fa fa-user-circle-o"></i></a>
         <a class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right"><i class="fa fa-search"></i></a>
         <a class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right">Apoya a #FuturoMéxico</a>
@@ -45,4 +45,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.alogo{
+  padding: 0;
+}
+.logo {
+  height: 43px;
+}
 </style>
