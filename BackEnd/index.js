@@ -1,43 +1,10 @@
-var express = require('express');
-var app = express();
+var express = require('express')
+  , app = express()
 
-app.get('/', function (req, res) {
-var request = require('request');
+var quejas = require('./routes/queja')
 
-var data = {
-  "query": `
-    query GetAllUsers {
-  viewer {
-    allUsers {
-      edges {
-        node {
-          id
-          username
-        }
-      }
-    }
-  }
-}
-  `,
-  "variables": {}
-}
-request({
-  url: "https://us-west-2.api.scaphold.io/graphql/MUDB",
-  method: "POST",
-  json: true,
-  headers: {
-    "content-type": "application/json",
-  },
-  body: data
-}, function(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    res.send(JSON.stringify(body, null, 2));
-  } else {
-    console.log(error);
-    console.log(response.statusCode);
-  }
-});
-});
+app.use('/', quejas);
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="w3-light-grey">
+  <div id="app">
     <top-nav></top-nav>  
     <router-view></router-view> 
   </div>
