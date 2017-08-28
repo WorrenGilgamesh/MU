@@ -1,12 +1,15 @@
 var express = require('express')
   , app = express()
 
-var quejas = require('./routes/queja')
+var showQuejas = require('./routes/showQuejaController')
+var addQuejas = require('./routes/addQuejaController')
 
-app.use('/', quejas);
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  app.use('/', showQuejas);
+  app.use('/', addQuejas);
+}).listen(8080, 'localhost');
+console.log('Server running at http://localhost:8080/');
 
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
 
