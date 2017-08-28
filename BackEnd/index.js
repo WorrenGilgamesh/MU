@@ -1,12 +1,14 @@
 var express = require('express')
   , app = express()
 
-var quejas = require('./routes/queja')
+var showQuejas = require('./routes/showQuejaController')
+var addQuejas = require('./routes/addQuejaController')
 
-app.use('/', quejas);
+app.use('/', showQuejas);
+app.use('/', addQuejas);
 
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(8080, function () {
+  console.log('Example app listening on port 8080!');
 });
 
