@@ -3,9 +3,13 @@ var express = require('express')
 
 var showQuejas = require('./routes/showQuejaController')
 var addQuejas = require('./routes/addQuejaController')
+var addQuejas = require('./../FrontEnd/prueba/dist/index.html')
 
 app.use('/', showQuejas);
 app.use('/', addQuejas);
+app.get('/index', function(req, res) {
+    res.sendFile(principal);
+});
 
 
 app.listen(8080, function () {
