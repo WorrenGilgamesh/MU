@@ -8,42 +8,29 @@
         2
       </div>
       <div class="text top">
-        Tú estas a una linea
+        Estas a nada
       </div>
       <div class="text bottom">
-        de lograr un cambio
+        de generar un cambio
       </div>
     </div>
     <div class="form w3-card-4 w3-border-bottom w3-white">
         <form class="w3-container">
-            <p>
-                <label class="w3-left">Escribe el titulo de tú demanda o petición</label>
-                <input class="w3-input w3-border w3-round" type="text" lazy required>
-            </p>
-            <div class="w3-row">
-              <div class="w3-col w3-third w3-padding">
-                <label class="w3-center">Elige la Categoría</label>
-                  <select class="w3-select" name="option">
-                    <option value="" disabled selected>selecciona</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-              </div>
-              <div class="w3-col w3-third w3-padding">
-                <label class="w3-center">Elige Ubicación</label>
-                <div><i class="w3-btn w3-block w3-red w3-round fa fa-map-marker"></i></div>
-              </div>
-              <div class="w3-col w3-third w3-padding">
-                <label class="w3-center">Elige una imagen</label>
-                <input type="file">
-              </div>
+            <div class="w3-center w3-border-bottom">
+                <label class="w3-border-bottom">núm de referencia</label>
+                <p>#{{referencia}}</p>
             </div>
-            <p>
-                <label class="w3-left">Explica tu Demanda o Petición </label>
-                <textarea class="w3-input w3-border" style="resize:none" placeholder="Cuando la gente sabe a detalle la ayuda aumenta la velocidad" lazy required></textarea>
-                <input class="w3-btn w3-margin secondary-color-dark primary-text w3-right" value="Siguiente >" @click="pasaQueja"></input>
-            </p>
+              <div class="w3-center w3-padding">
+                <button class="w3-btn w3-block w3-border facebook primary-text w3-round">Login Facebook</button>
+                <button class="w3-btn w3-block w3-border w3-margin-top google w3-round">Login Gmail</button>
+              </div>
+              <p>Ó</p>
+              <div class="w3-center w3-padding">
+                <input class="w3-input w3-border w3-round" type="text" placeholder="Nombre">
+                <input class="w3-input w3-border w3-round w3-margin-top" type="text" placeholder="Apellido">
+                <input class="w3-input w3-border w3-round w3-margin-top" type="email" v-model="email" lazy required> 
+                <button class="w3-btn secondary-color-dark primary-text w3-margin-top w3-right">Terminar</button>
+              </div>
         </form>
     </div>
   </div>
@@ -51,11 +38,12 @@
 
 <script>
 export default {
-  name: 'queja-form',
+  name: 'queja-login',
   data () {
     return {
       titulo: '',
       email: '',
+      referencia: 1234,
       disponible: false,
       reg: new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$')
     }
@@ -63,7 +51,7 @@ export default {
   methods: {
     pasaQueja: function (e) {
       e.preventDefault()
-      this.$router.push({name: 'QuejaLog'})
+      this.$router.push({name: 'gracias', params: {titulo: this.titulo, email: this.email}})
     },
     checa: function (e) {
       e.preventDefault()

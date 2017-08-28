@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="w3-light-grey">
+  <div id="app">
     <top-nav></top-nav>  
     <router-view></router-view> 
   </div>
@@ -41,5 +41,12 @@ body {
 }
 .secondary-boder {
   border-color: #9a0007 !important;
+}
+.facebook {
+  background-color: #3b5998;
+}
+.google {
+  color: #d62d20;
+  border-color: #d62d20;
 }
 </style>
