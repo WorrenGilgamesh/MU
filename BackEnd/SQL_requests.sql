@@ -41,4 +41,4 @@ ALTER TABLE "requests_request_volunteer" ADD CONSTRAINT "requests_request_volunt
 CREATE INDEX "requests_request_volunteer_request_id_3c8b55cf" ON "requests_request_volunteer" ("request_id");
 CREATE INDEX "requests_request_volunteer_volunteer_id_8ce3f89c" ON "requests_request_volunteer" ("volunteer_id");
 COMMIT;
-##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_requests.sql
+

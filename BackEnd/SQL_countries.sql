@@ -12,4 +12,3 @@ ALTER TABLE "countries_state" ADD CONSTRAINT "countries_state_country_id_85083d4
 CREATE INDEX "countries_state_country_id_85083d40" ON "countries_state" ("country_id");
 CREATE INDEX "countries_state_country_id_85083d40_like" ON "countries_state" ("country_id" varchar_pattern_ops);
 COMMIT;
-##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_countries.sql

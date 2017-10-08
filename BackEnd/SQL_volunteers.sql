@@ -13,4 +13,4 @@ ALTER TABLE "volunteers_volunteer" ADD CONSTRAINT "volunteers_volunteer_user_id_
 CREATE INDEX "volunteers_volunteer_ocupation_id_8d8c9cb1" ON "volunteers_volunteer" ("ocupation_id");
 CREATE INDEX "volunteers_volunteer_state_id_7f8eb8c9" ON "volunteers_volunteer" ("state_id");
 COMMIT;
-##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_volunteers.sql
+
