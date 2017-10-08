@@ -1,20 +1,11 @@
-var express = require('express')
-  , app = express()
-
-var showQuejas = require('./routes/showQuejaController')
-var addQuejas = require('./routes/addQuejaController')
-var principal = '/FrontEnd/prueba/dist'
-var path = require("path");
-
-app.use('/', showQuejas);
-app.use('/', addQuejas);
-app.get('/index', function(req, res) {
-    res.sendFile(path.join(__dirname, '..', principal, 'index.html'));
-});
-  
+const express = require('express');
+const postgraphql = require('postgraphql').postgraphql;
 
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
-});
+const app = express();
 
+app.use(postgraphql('postgres://postgres:admin@localhost:5432/fm_db','public',{'graphiql':true}));
+
+
+
+app.listen(3000);
