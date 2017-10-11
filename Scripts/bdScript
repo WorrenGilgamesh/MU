@@ -1,0 +1,124 @@
+	BEGIN;
+--
+-- Create model Country
+--
+CREATE TABLE "countries_country" ("
+	iso" varchar(10) NOT NULL PRIMARY KEY, 
+	"name" varchar(250) NOT NULL);
+--
+-- Create model State
+--
+CREATE TABLE "countries_state" (
+	"id" serial NOT NULL PRIMARY KEY, 
+	"name" varchar(250) NOT NULL, 
+	"country_id" varchar(10) NOT NULL);
+
+CREATE INDEX "countries_country_iso_f7f258ff_like" ON "countries_country" ("iso" varchar_pattern_ops);
+
+ALTER TABLE "countries_state" ADD CONSTRAINT "countries_state_country_id_85083d40_fk_countries_country_iso" FOREIGN KEY ("country_id") REFERENCES "countries_country" ("iso") DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX "countries_state_country_id_85083d40" ON "countries_state" ("country_id");
+CREATE INDEX "countries_state_country_id_85083d40_like" ON "countries_state" ("country_id" varchar_pattern_ops);
+COMMIT;
+##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_countries.sql
+BEGIN;
+--
+-- Create model Item
+--
+CREATE TABLE "items_item" (
+	"id" serial NOT NULL PRIMARY KEY, 
+	"name" varchar(100) NOT NULL, 
+	"type" varchar(20) NOT NULL);
+COMMIT;
+##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_items.sql
+BEGIN;
+--
+-- Create model Request
+--
+CREATE TABLE "requests_request" ("id" serial NOT NULL PRIMARY KEY, 
+	"title" varchar(250) NOT NULL, 
+	"description" text NOT NULL, 
+	"created_at" date NOT NULL, 
+	"start_at" date NULL, 
+	"completed" boolean NOT NULL);
+--
+-- Create model RequestItem
+--
+CREATE TABLE "requests_requestitem" (
+	"id" serial NOT NULL PRIMARY KEY, 
+	"amount" integer NOT NULL, 
+	"item_id" integer NOT NULL, 
+	"request_id" integer NOT NULL);
+--
+-- Create model RequestOcupation
+--
+CREATE TABLE "requests_requestocupation" (
+	"id" serial NOT NULL PRIMARY KEY, 
+	"amount" integer NOT NULL, 
+	"ocupation_id" integer NOT NULL, 
+	"request_id" integer NOT NULL);
+--
+-- Add field items to request
+--
+--
+-- Add field ocupations to request
+--
+--
+-- Add field risk_point to request
+--
+ALTER TABLE "requests_request" ADD COLUMN "risk_point_id" integer NOT NULL;
+--
+-- Add field volunteer to request
+--
+CREATE TABLE "requests_request_volunteer" (
+	"id" serial NOT NULL PRIMARY KEY, 
+	"request_id" integer NOT NULL, 
+	"volunteer_id" integer NOT NULL);
+
+ALTER TABLE "requests_requestitem" ADD CONSTRAINT "requests_requestitem_item_id_8cf1476a_fk_items_item_id" FOREIGN KEY ("item_id") REFERENCES "items_item" ("id") DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "requests_requestitem" ADD CONSTRAINT "requests_requestitem_request_id_4fb52de5_fk_requests_request_id" FOREIGN KEY ("request_id") REFERENCES "requests_request" ("id") DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX "requests_requestitem_item_id_8cf1476a" ON "requests_requestitem" ("item_id");
+CREATE INDEX "requests_requestitem_request_id_4fb52de5" ON "requests_requestitem" ("request_id");
+ALTER TABLE "requests_requestocupation" ADD CONSTRAINT "requests_requestocup_ocupation_id_940dfdf0_fk_volunteer" FOREIGN KEY ("ocupation_id") REFERENCES "volunteers_ocupation" ("id") DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "requests_requestocupation" ADD CONSTRAINT "requests_requestocup_request_id_cdec2d65_fk_requests_" FOREIGN KEY ("request_id") REFERENCES "requests_request" ("id") DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX "requests_requestocupation_ocupation_id_940dfdf0" ON "requests_requestocupation" ("ocupation_id");
+CREATE INDEX "requests_requestocupation_request_id_cdec2d65" ON "requests_requestocupation" ("request_id");
+CREATE INDEX "requests_request_risk_point_id_0121cea3" ON "requests_request" ("risk_point_id");
+ALTER TABLE "requests_request" ADD CONSTRAINT "requests_request_risk_point_id_0121cea3_fk_risk_poin" FOREIGN KEY ("risk_point_id") REFERENCES "risk_points_riskpoint" ("id") DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "requests_request_volunteer" ADD CONSTRAINT "requests_request_vol_request_id_3c8b55cf_fk_requests_" FOREIGN KEY ("request_id") REFERENCES "requests_request" ("id") DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "requests_request_volunteer" ADD CONSTRAINT "requests_request_vol_volunteer_id_8ce3f89c_fk_volunteer" FOREIGN KEY ("volunteer_id") REFERENCES "volunteers_volunteer" ("id") DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "requests_request_volunteer" ADD CONSTRAINT "requests_request_volunte_request_id_volunteer_id_230d8e5c_uniq" UNIQUE ("request_id", "volunteer_id");
+CREATE INDEX "requests_request_volunteer_request_id_3c8b55cf" ON "requests_request_volunteer" ("request_id");
+CREATE INDEX "requests_request_volunteer_volunteer_id_8ce3f89c" ON "requests_request_volunteer" ("volunteer_id");
+COMMIT;
+##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_requests.sql
+BEGIN;
+--
+-- Create model RiskPoint
+--
+CREATE TABLE "risk_points_riskpoint" (
+	"id" serial NOT NULL PRIMARY KEY, 
+	"name" varchar(250) NOT NULL, 
+	"lat" double precision NOT NULL, 
+	"lon" double precision NOT NULL, 
+	"risk" varchar(15) NOT NULL, 
+	"description" jsonb NOT NULL, 
+	"created_at" date NOT NULL);
+COMMIT;
+##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_risk_points.sql
+BEGIN;
+--
+-- Create model Ocupation
+--
+CREATE TABLE "volunteers_ocupation" ("id" serial NOT NULL PRIMARY KEY, 
+	"name" varchar(50) NOT NULL);
+--
+-- Create model Volunteer
+--
+CREATE TABLE "volunteers_volunteer" ("id" serial NOT NULL PRIMARY KEY, "avatar" varchar(300) NOT NULL, "nni" varchar(20) NOT NULL, "phone" varchar(20) NOT NULL, "mobility" boolean NOT NULL, "age" integer NOT NULL, "genre" varchar(10) NOT NULL, "blood_type" varchar(20) NOT NULL, "created_at" date NOT NULL, "ocupation_id" integer NOT NULL, "state_id" integer NOT NULL, "user_id" integer NOT NULL UNIQUE);
+ALTER TABLE "volunteers_volunteer" ADD CONSTRAINT "volunteers_volunteer_ocupation_id_8d8c9cb1_fk_volunteer" FOREIGN KEY ("ocupation_id") REFERENCES "volunteers_ocupation" ("id") DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "volunteers_volunteer" ADD CONSTRAINT "volunteers_volunteer_state_id_7f8eb8c9_fk_countries_state_id" FOREIGN KEY ("state_id") REFERENCES "countries_state" ("id") DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE "volunteers_volunteer" ADD CONSTRAINT "volunteers_volunteer_user_id_1b8ed0c2_fk_auth_user_id" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX "volunteers_volunteer_ocupation_id_8d8c9cb1" ON "volunteers_volunteer" ("ocupation_id");
+CREATE INDEX "volunteers_volunteer_state_id_7f8eb8c9" ON "volunteers_volunteer" ("state_id");
+COMMIT;
+##[jetbrains/home/diego/PycharmProjects/futuro_mex_back/SQL_volunteers.sql
